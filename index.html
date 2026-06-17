@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="FileSure — Centralized review intelligence dashboard for e-commerce brand owners. Aggregate, analyze, and respond to customer reviews across Amazon, Flipkart, Google, and Trustpilot." />
+  <title>FileSure — Review Intelligence Dashboard</title>
+
+  <!-- Google Font: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+
+  <!-- App Styles (modular) -->
+  <link rel="stylesheet" href="assets/css/variables.css" />
+  <link rel="stylesheet" href="assets/css/layout.css" />
+  <link rel="stylesheet" href="assets/css/components.css" />
+</head>
+<body>
+  <div class="app-layout">
+
+    <!-- ─────────── Sidebar ─────────── -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-icon">🛡️</div>
+        <div>
+          <h1>FileSure</h1>
+          <div class="brand-tag">Review Intelligence</div>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section-label">Main</div>
+        <div class="nav-item active" id="nav-dashboard">
+          <span class="nav-icon">📊</span>
+          <span>Dashboard</span>
+        </div>
+        <div class="nav-item" id="nav-reviews">
+          <span class="nav-icon">💬</span>
+          <span>All Reviews</span>
+          <span class="badge">24</span>
+        </div>
+        <div class="nav-item" id="nav-analytics">
+          <span class="nav-icon">📈</span>
+          <span>Analytics</span>
+        </div>
+        <div class="nav-item" id="nav-products">
+          <span class="nav-icon">📦</span>
+          <span>Products</span>
+        </div>
+
+        <div class="nav-section-label">Platforms</div>
+        <div class="nav-item" id="nav-amazon">
+          <span class="nav-icon">🛒</span>
+          <span>Amazon</span>
+        </div>
+        <div class="nav-item" id="nav-flipkart">
+          <span class="nav-icon">🛍️</span>
+          <span>Flipkart</span>
+        </div>
+        <div class="nav-item" id="nav-google">
+          <span class="nav-icon">🔍</span>
+          <span>Google Reviews</span>
+        </div>
+        <div class="nav-item" id="nav-trustpilot">
+          <span class="nav-icon">⭐</span>
+          <span>Trustpilot</span>
+        </div>
+
+        <div class="nav-section-label">System</div>
+        <div class="nav-item" id="nav-integrations">
+          <span class="nav-icon">🔗</span>
+          <span>Integrations</span>
+        </div>
+        <div class="nav-item" id="nav-settings">
+          <span class="nav-icon">⚙️</span>
+          <span>Settings</span>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="sidebar-user">
+          <div class="user-avatar">SK</div>
+          <div class="user-info">
+            <div class="user-name">Suraj Kumar</div>
+            <div class="user-role">Brand Manager</div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ─────────── Main Content ─────────── -->
+    <main class="main-content">
+
+      <!-- Header -->
+      <header class="header">
+        <div class="header-left">
+          <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+          <div class="header-title">
+            <h2>Dashboard Overview</h2>
+            <p>Monday, 15 June 2026 &bull; Last synced 5 min ago</p>
+          </div>
+        </div>
+        <div class="header-right">
+          <div class="search-box" id="searchBox">
+            <span class="search-icon">🔍</span>
+            <input type="text" placeholder="Search reviews, products..." id="searchInput" />
+          </div>
+          <button class="header-icon-btn" id="notificationBtn" title="Notifications">
+            🔔
+            <span class="notif-dot"></span>
+          </button>
+          <button class="header-icon-btn" id="exportBtn" title="Export Report">
+            📥
+          </button>
+        </div>
+      </header>
+
+      <!-- Page Content -->
+      <div class="page-content">
+
+        <!-- ─── KPI Cards ─── -->
+        <section class="kpi-grid" id="kpiGrid">
+          <div class="kpi-card animate-in">
+            <div class="kpi-header">
+              <div class="kpi-icon purple">💬</div>
+              <span class="kpi-trend up">↑ 12.5%</span>
+            </div>
+            <div class="kpi-value" data-count="9415">0</div>
+            <div class="kpi-label">Total Reviews (This Month)</div>
+          </div>
+          <div class="kpi-card animate-in">
+            <div class="kpi-header">
+              <div class="kpi-icon green">⭐</div>
+              <span class="kpi-trend up">↑ 0.3</span>
+            </div>
+            <div class="kpi-value" data-count="4.2" data-suffix="/5">0</div>
+            <div class="kpi-label">Average Rating</div>
+          </div>
+          <div class="kpi-card animate-in">
+            <div class="kpi-header">
+              <div class="kpi-icon amber">⚡</div>
+              <span class="kpi-trend down">↓ 2.1%</span>
+            </div>
+            <div class="kpi-value" data-count="87" data-suffix="%">0</div>
+            <div class="kpi-label">Response Rate</div>
+          </div>
+          <div class="kpi-card animate-in">
+            <div class="kpi-header">
+              <div class="kpi-icon blue">🎯</div>
+              <span class="kpi-trend up">↑ 5.2%</span>
+            </div>
+            <div class="kpi-value" data-count="72" data-suffix="%">0</div>
+            <div class="kpi-label">Positive Sentiment</div>
+          </div>
+        </section>
+
+        <!-- ─── Charts Row ─── -->
+        <section class="charts-grid">
+          <div class="card">
+            <div class="card-header">
+              <h3>Review Trends</h3>
+              <div class="card-actions">
+                <button class="time-filter-btn" data-range="7d">7D</button>
+                <button class="time-filter-btn" data-range="30d">30D</button>
+                <button class="time-filter-btn active" data-range="6m">6M</button>
+                <button class="time-filter-btn" data-range="1y">1Y</button>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="chart-container">
+                <canvas id="trendChart"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <h3>Sentiment Distribution</h3>
+            </div>
+            <div class="card-body">
+              <div class="chart-container">
+                <canvas id="sentimentChart"></canvas>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ─── Connected Platforms ─── -->
+        <div class="section-header">
+          <h3>Connected Platforms</h3>
+          <span class="view-all">+ Add Platform</span>
+        </div>
+        <section class="platform-grid">
+          <div class="platform-card" id="platform-amazon">
+            <div class="platform-logo amazon">A</div>
+            <div class="platform-name">Amazon India</div>
+            <div class="platform-stats">4,200 reviews &bull; Avg 4.3★</div>
+            <div class="platform-status connected">
+              <span class="status-dot connected"></span>
+              Connected
+            </div>
+          </div>
+          <div class="platform-card" id="platform-flipkart">
+            <div class="platform-logo flipkart">F</div>
+            <div class="platform-name">Flipkart</div>
+            <div class="platform-stats">2,800 reviews &bull; Avg 4.1★</div>
+            <div class="platform-status connected">
+              <span class="status-dot connected"></span>
+              Connected
+            </div>
+          </div>
+          <div class="platform-card" id="platform-google">
+            <div class="platform-logo google">G</div>
+            <div class="platform-name">Google Reviews</div>
+            <div class="platform-stats">1,500 reviews &bull; Avg 4.0★</div>
+            <div class="platform-status connected">
+              <span class="status-dot connected"></span>
+              Connected
+            </div>
+          </div>
+          <div class="platform-card" id="platform-trustpilot">
+            <div class="platform-logo trustpilot">T</div>
+            <div class="platform-name">Trustpilot</div>
+            <div class="platform-stats">900 reviews &bull; Avg 4.5★</div>
+            <div class="platform-status connected">
+              <span class="status-dot connected"></span>
+              Connected
+            </div>
+          </div>
+        </section>
+
+        <!-- ─── Recent Reviews ─── -->
+        <div class="section-header" style="margin-top: 8px;">
+          <h3>Recent Reviews</h3>
+          <div class="card-actions">
+            <button class="time-filter-btn sentiment-filter-btn active" data-filter="all">All</button>
+            <button class="time-filter-btn sentiment-filter-btn" data-filter="positive">Positive</button>
+            <button class="time-filter-btn sentiment-filter-btn" data-filter="neutral">Neutral</button>
+            <button class="time-filter-btn sentiment-filter-btn" data-filter="negative">Negative</button>
+          </div>
+        </div>
+        <div class="card reviews-table-card">
+          <table class="reviews-table" id="reviewsTable">
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>Review</th>
+                <th>Rating</th>
+                <th>Sentiment</th>
+                <th>Platform</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="reviewsTableBody">
+              <!-- Rendered by JS -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- ─── Bottom Grid: Alerts + Keywords ─── -->
+        <section class="bottom-grid">
+          <div class="card">
+            <div class="card-header">
+              <h3>⚡ Action Items & Alerts</h3>
+            </div>
+            <div class="card-body">
+              <div class="alert-list" id="alertsList">
+                <!-- Rendered by JS -->
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <h3>🏷️ Trending Keywords</h3>
+            </div>
+            <div class="card-body">
+              <div class="keyword-cloud" id="keywordsCloud">
+                <!-- Rendered by JS -->
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div><!-- end .page-content -->
+    </main>
+  </div><!-- end .app-layout -->
+
+  <!-- ─────────── Response Modal ─────────── -->
+  <div class="modal-overlay" id="responseModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>Respond to Review</h3>
+        <button class="modal-close" id="modalCloseBtn">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>Reviewer</label>
+          <div style="font-size:0.9rem; font-weight:600; color:var(--text-primary);" id="modalReviewerName">—</div>
+        </div>
+        <div class="form-group">
+          <label>Product</label>
+          <div style="font-size:0.9rem; color:var(--text-secondary);" id="modalProductName">—</div>
+        </div>
+        <div class="form-group">
+          <label>Rating</label>
+          <div id="modalRating"></div>
+        </div>
+        <div class="form-group">
+          <label>Review</label>
+          <div style="font-size:0.84rem; color:var(--text-secondary); line-height:1.6; background:var(--bg-input); padding:12px; border-radius:8px;" id="modalReviewText">—</div>
+        </div>
+        <div class="form-group">
+          <label for="responseTone">Response Tone</label>
+          <select id="responseTone">
+            <option value="professional">Professional</option>
+            <option value="empathetic">Empathetic</option>
+            <option value="thankful">Thankful</option>
+            <option value="apologetic">Apologetic</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="responseText">Your Response</label>
+          <textarea id="responseText" placeholder="Type your response here..."></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="action-btn" id="modalCancelBtn">Cancel</button>
+        <button class="action-btn primary" id="modalSendBtn">Send Response</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- App Scripts (modular — load order matters) -->
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/charts.js"></script>
+  <script src="assets/js/ui.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
