@@ -48,7 +48,7 @@ function bindEvents() {
     });
   });
 
-  // Time filter buttons (visual toggle for demo)
+  // Time filter buttons (updates Chart.js data)
   var timeFilterBtns = document.querySelectorAll(".time-filter-btn:not(.sentiment-filter-btn)");
   timeFilterBtns.forEach(function (btn) {
     btn.addEventListener("click", function () {
@@ -59,6 +59,11 @@ function bindEvents() {
         });
       }
       btn.classList.add("active");
+      
+      var range = btn.getAttribute("data-range");
+      if (range) {
+        updateTrendChart(range);
+      }
       showToast("success", "Showing data for " + btn.textContent + " period");
     });
   });

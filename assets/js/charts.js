@@ -18,6 +18,8 @@ const CHART_TOOLTIP = {
   bodyFont: { family: "Inter" },
 };
 
+let trendChartInstance = null;
+
 /**
  * Initialise the Review Trends line chart.
  */
@@ -25,7 +27,7 @@ function initTrendChart() {
   const ctx = document.getElementById("trendChart");
   if (!ctx) return;
 
-  new Chart(ctx, {
+  trendChartInstance = new Chart(ctx, {
     type: "line",
     data: {
       labels: MONTHLY_REVIEW_DATA.labels,
@@ -99,6 +101,21 @@ function initTrendChart() {
       },
     },
   });
+}
+
+/**
+ * Dynamically updates the trend chart dataset and labels based on selected range.
+ * @param {string} range - '7d', '30d', '6m', or '1y'
+ */
+function updateTrendChart(range) {
+  if (!trendChartInstance || !TREND_DATASETS[range]) return;
+
+  const dataset = TREND_DATASETS[range];
+  trendChartInstance.data.labels = dataset.labels;
+  trendChartInstance.data.datasets[0].data = dataset.positive;
+  trendChartInstance.data.datasets[1].data = dataset.neutral;
+  trendChartInstance.data.datasets[2].data = dataset.negative;
+  trendChartInstance.update();
 }
 
 /**

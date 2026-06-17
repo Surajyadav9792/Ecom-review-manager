@@ -126,12 +126,34 @@ const MOCK_REVIEWS = [
   },
 ];
 
-const MONTHLY_REVIEW_DATA = {
-  labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
-  positive: [820, 930, 870, 1050, 980, 1120],
-  neutral: [210, 180, 240, 190, 230, 200],
-  negative: [120, 90, 140, 110, 130, 95],
+const TREND_DATASETS = {
+  "7d": {
+    labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+    positive: [42, 55, 38, 48, 62, 70, 68],
+    neutral: [10, 12, 8, 15, 11, 14, 13],
+    negative: [4, 6, 2, 5, 8, 3, 4],
+  },
+  "30d": {
+    labels: ["Week 1", "Week 2", "Week 3", "Week 4"],
+    positive: [210, 245, 230, 280],
+    neutral: [55, 48, 62, 50],
+    negative: [22, 18, 25, 15],
+  },
+  "6m": {
+    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+    positive: [820, 930, 870, 1050, 980, 1120],
+    neutral: [210, 180, 240, 190, 230, 200],
+    negative: [120, 90, 140, 110, 130, 95],
+  },
+  "1y": {
+    labels: ["Q3 2025", "Q4 2025", "Q1 2026", "Q2 2026"],
+    positive: [2800, 3100, 2900, 3400],
+    neutral: [750, 820, 780, 890],
+    negative: [380, 410, 350, 390],
+  },
 };
+
+const MONTHLY_REVIEW_DATA = TREND_DATASETS["6m"];
 
 const PLATFORM_DISTRIBUTION = {
   labels: ["Amazon", "Flipkart", "Google", "Trustpilot"],
